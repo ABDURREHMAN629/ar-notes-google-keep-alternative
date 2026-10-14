@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Note sheet with a folded corner -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,32 H62 L72,42 V74 Q72,76 70,76 H38 Q36,76 36,74 V34 Q36,32 38,32 Z" />
+    <path
+        android:fillColor="#FFE08A"
+        android:pathData="M62,32 V40 Q62,42 64,42 H72 Z" />
+    <!-- Lines of text -->
+    <path
+        android:fillColor="#F29900"
+        android:pathData="M42,50 H66 V53.5 H42 Z M42,58 H66 V61.5 H42 Z M42,66 H58 V69.5 H42 Z" />
+</vector>

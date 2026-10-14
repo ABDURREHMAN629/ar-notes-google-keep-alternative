@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.4.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply from: "variables.gradle"
+
+// Capacitor plugins declare their own (older) Android Gradle Plugin and Kotlin plugin
+// versions; align them with the root so the build uses a single toolchain.
+subprojects {
+    buildscript {
+        configurations.configureEach {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.tools.build' && details.requested.name == 'gradle') {
+                    details.useVersion '9.4.0'
+                }
+                if (details.requested.group == 'org.jetbrains.kotlin' && details.requested.name == 'kotlin-gradle-plugin') {
+                    details.useVersion '2.4.20'
+                }
+            }
+        }
+    }
+}
+
+// The plugins ask for a Java 21 toolchain; build them with the JDK running Gradle
+// (Android Studio's bundled one) while still producing Java 21 bytecode.
+subprojects {
+    afterEvaluate { p ->
+        def javaExt = p.extensions.findByType(JavaPluginExtension)
+        if (javaExt != null) {
+            javaExt.toolchain.languageVersion.set(JavaLanguageVersion.of(JavaVersion.current().majorVersion as int))
+        }
+        p.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile).configureEach {
+            compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

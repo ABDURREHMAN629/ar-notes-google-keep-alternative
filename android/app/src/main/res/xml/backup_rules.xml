@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and older: back up the notes and their pictures to the phone's Google account. -->
+<full-backup-content>
+    <include domain="file" path="notes.json" />
+    <include domain="file" path="notes.previous.json" />
+    <include domain="file" path="images" />
+</full-backup-content>

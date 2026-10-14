@@ -1,0 +1,23 @@
+# Dependencies (restored with: npm install)
+node_modules/
+
+# Build output
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/
+android/.gradle/
+android/.idea/
+android/local.properties
+*.apk
+
+# App signing key - NEVER commit. Keep a private backup of these two.
+android/keystore/
+android/keystore.properties
+
+# Copied in by: npm run sync
+www/lib/
+www/fonts/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
