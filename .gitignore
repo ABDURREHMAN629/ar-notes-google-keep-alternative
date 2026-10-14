@@ -21,3 +21,6 @@ www/fonts/
 # Editor / OS
 .DS_Store
 Thumbs.db
+
+# Local handover notes (contain personal/device details - keep off GitHub)
+_project-notes/
